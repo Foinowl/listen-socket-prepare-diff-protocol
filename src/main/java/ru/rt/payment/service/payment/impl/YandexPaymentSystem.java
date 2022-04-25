@@ -1,8 +1,9 @@
-package ru.rt.payment.service.payment;
+package ru.rt.payment.service.payment.impl;
 
 import ru.rt.payment.model.Order;
+import ru.rt.payment.service.payment.impl.AbstractPaymentSystem;
 
-public class YandexPaymentSystem extends AbstractPaymentSystem{
+public class YandexPaymentSystem extends AbstractPaymentSystem {
 
     public YandexPaymentSystem(String propertyApiKey) {
         super(propertyApiKey);

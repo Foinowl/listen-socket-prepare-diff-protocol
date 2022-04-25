@@ -1,7 +1,7 @@
-package ru.rt.payment.service.payment;
+package ru.rt.payment.service.payment.impl;
 
 import ru.rt.payment.model.Order;
-import ru.rt.payment.service.PaymentSystem3DSecure;
+import ru.rt.payment.service.payment.PaymentSystem3DSecure;
 
 public class PayPalPaymentSystem extends AbstractPaymentSystem implements PaymentSystem3DSecure {
     protected PayPalPaymentSystem(final String keyApi) {

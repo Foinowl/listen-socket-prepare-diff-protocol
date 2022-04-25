@@ -1,8 +1,7 @@
-package ru.rt.payment.service.payment;
+package ru.rt.payment.service.payment.impl;
 
 import ru.rt.payment.model.PaymentType;
-import ru.rt.payment.service.PaymentSystem;
-import ru.rt.payment.service.payment.PayPalPaymentSystem;
+import ru.rt.payment.service.payment.PaymentSystem;
 
 public class PaymentSystemFactory {
 
@@ -19,7 +18,7 @@ public class PaymentSystemFactory {
         return new YandexPaymentSystem("yandex.api");
     }
 
-    public static PaymentSystem createPayPal() {
+    private static PaymentSystem createPayPal() {
         return new PayPalPaymentSystem("payPal.api");
     }
 }
