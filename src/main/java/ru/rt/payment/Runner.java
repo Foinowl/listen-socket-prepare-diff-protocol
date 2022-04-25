@@ -25,7 +25,7 @@ public class Runner {
             .setCardholderName("Petrov")
             .setCvv(228)
             .setExpirationYear(2022)
-            .setExpirationYear(5)
+            .setExpirationYear(4)
             .setId(1);
         User user = new User("Petrov", "+798*", "nifpopnaf@ukrop.by");
 
