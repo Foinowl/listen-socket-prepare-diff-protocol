@@ -24,7 +24,7 @@ public class PayPalPaymentSystem extends AbstractPaymentSystem implements Paymen
 
 
     @Override
-    public void make3DSecure() {
+    public void make3DSecure(final Order order) {
         System.out.println("PayPal: Только темная сторона может реализовать алгоритм");
     }
 }

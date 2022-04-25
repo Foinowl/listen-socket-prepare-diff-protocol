@@ -1,29 +1,42 @@
 package ru.rt.payment.service.billing;
 
-import java.util.ArrayList;
 import java.util.List;
 import ru.rt.payment.model.Order;
 import ru.rt.payment.model.PaymentType;
 import ru.rt.payment.model.StatusOrder;
 import ru.rt.payment.model.User;
+import ru.rt.payment.repository.OrderDao;
+import ru.rt.payment.service.payment.PaymentSystem3DSecure;
 import ru.rt.payment.service.payment.impl.PaymentSystemFactory;
 
 public class OrderServiceImpl implements OrderService {
+
+    OrderDao orderDao;
+
     @Override
     public StatusOrder getStatusOrder(final long id) {
         System.out.println("Обратились с слою dao и отдали статус заказа");
-        return StatusOrder.PAID;
+        return orderDao.getStatusByOrderId(id);
     }
 
     @Override
     public List<Order> getAllOrdersByUser(final User user) {
         System.out.println("Обратились с слою dao и получили историю платежей");
-        return new ArrayList<>();
+        return orderDao.findByUser(1);
     }
 
     @Override
     public void makePayment(final Order order, final PaymentType type) {
-        PaymentSystemFactory.getPaymentSystem(type);
-        System.out.println("Обратились с слою dao и получили историю платежей");
+//        Создаем заказ в таблице бд
+        orderDao.create(order);
+        PaymentSystemFactory.getPaymentSystem(type).pay(order);
+//        В зависимости от обработки paymentSystem, можно изменять статус обработки заказа
+    }
+
+    @Override
+    public void makePayment3D(final Order order, final PaymentType type) {
+        orderDao.create(order);
+        final PaymentSystem3DSecure paymentSystem = (PaymentSystem3DSecure) PaymentSystemFactory.getPaymentSystem(type);
+        paymentSystem.make3DSecure(order);
     }
 }

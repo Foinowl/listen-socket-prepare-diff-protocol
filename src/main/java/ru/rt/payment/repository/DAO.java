@@ -6,15 +6,28 @@ import java.util.List;
 public interface DAO<T> {
 
 
-//    Получаем все элементы
-    List<T> findAll();
+    //    Получаем все элементы
+    default List<T> findAll() {
+        System.out.println("Получаем все элементы");
+        return null;
+    }
 
-//    Находим объект по id
-    T find(long id);
+    //    Находим объект по id
+    default T find(long id) {
+        System.out.println("Находим объект по id");
+        return null;
+    }
 
-//    Создаем новую запись в бд
-    boolean create(T t);
+    //    Создаем новую запись в бд
+    default boolean create(T t) {
+        System.out.println("Создаем новую запись в бд");
+        return false;
+    }
 
-//    Удаляем запись из бд по объекту
-    boolean delete(T t);
+    //    Удаляем запись из бд по объекту
+    default boolean delete(T t) {
+        System.out.println("Удаляем запись из бд по объекту");
+        return false;
+    }
+
 }

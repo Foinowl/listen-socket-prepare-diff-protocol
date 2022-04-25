@@ -4,13 +4,18 @@ import java.util.Objects;
 
 public class Product {
     private String name;
+
     private String description;
 
     private Amount amount;
 
-    public Product(final String name, final String description) {
+    public Product() {
+    }
+
+    public Product(final String name, final String description, Amount amount) {
         this.name = name;
         this.description = description;
+        this.amount = amount;
     }
 
     public String getName() {
@@ -23,6 +28,10 @@ public class Product {
 
     public String getDescription() {
         return description;
+    }
+
+    public Amount getAmount() {
+        return amount;
     }
 
     public void setDescription(final String description) {

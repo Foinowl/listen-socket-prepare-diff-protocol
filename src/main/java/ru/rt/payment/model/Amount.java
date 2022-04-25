@@ -1,19 +1,19 @@
 package ru.rt.payment.model;
 
-import java.math.BigDecimal;
 import java.util.Currency;
 import java.util.Objects;
 
 public class Amount {
-    private BigDecimal total;
+    private long total;
+
     private Currency currency;
 
-    public Amount(final BigDecimal total, final Currency currency) {
+    public Amount(final long total, final Currency currency) {
         this.total = total;
         this.currency = currency;
     }
 
-    public BigDecimal getTotal() {
+    public long getTotal() {
         return total;
     }
 
@@ -21,7 +21,7 @@ public class Amount {
         return currency;
     }
 
-    public void setTotal(final BigDecimal total) {
+    public void setTotal(final long total) {
         this.total = total;
     }
 

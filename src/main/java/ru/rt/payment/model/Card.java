@@ -2,9 +2,7 @@ package ru.rt.payment.model;
 
 public class Card {
     private long id;
-    private long userInformationId;
-
-    private long cardNumber;
+    private String cardNumber;
 
     private int expirationMonth;
 
@@ -14,11 +12,10 @@ public class Card {
 
     private int cvv;
 
-    public Card(final long id, final long userInformationId, final long cardNumber, final int expirationMonth,
+    public Card(final long id, final String cardNumber, final int expirationMonth,
                 final int expirationYear,
                 final String cardholderName, final int cvv) {
         this.id = id;
-        this.userInformationId = userInformationId;
         this.cardNumber = cardNumber;
         this.expirationMonth = expirationMonth;
         this.expirationYear = expirationYear;
@@ -38,20 +35,11 @@ public class Card {
         return this;
     }
 
-    public long getUserInformationId() {
-        return userInformationId;
-    }
-
-    public Card setUserInformationId(final long userInformationId) {
-        this.userInformationId = userInformationId;
-        return this;
-    }
-
-    public long getCardNumber() {
+    public String getCardNumber() {
         return cardNumber;
     }
 
-    public Card setCardNumber(final long cardNumber) {
+    public Card setCardNumber(final String cardNumber) {
         this.cardNumber = cardNumber;
         return this;
     }

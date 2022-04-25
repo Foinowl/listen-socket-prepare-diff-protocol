@@ -8,12 +8,14 @@ import ru.rt.payment.model.User;
 
 public interface OrderService {
 
-//    Получаем статус заказа по его номеру
+    //    Получаем статус заказа по его номеру
     StatusOrder getStatusOrder(long id);
 
-//  История платежей по юзеру
+    //  История платежей по юзеру
     List<Order> getAllOrdersByUser(User user);
 
-//    оформляем заказ
+    //    оформляем заказ
     void makePayment(Order order, PaymentType type);
+
+    void makePayment3D(Order order, PaymentType type);
 }

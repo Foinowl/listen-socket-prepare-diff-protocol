@@ -1,7 +1,6 @@
 package ru.rt.payment.service.payment.impl;
 
 import ru.rt.payment.model.Order;
-import ru.rt.payment.service.payment.impl.AbstractPaymentSystem;
 
 public class YandexPaymentSystem extends AbstractPaymentSystem {
 
