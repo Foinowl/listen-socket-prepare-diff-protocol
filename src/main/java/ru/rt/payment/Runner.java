@@ -11,8 +11,8 @@ import ru.rt.payment.model.PaymentType;
 import ru.rt.payment.model.Product;
 import ru.rt.payment.model.StatusOrder;
 import ru.rt.payment.model.User;
-import ru.rt.payment.service.billing.OrderService;
-import ru.rt.payment.service.billing.OrderServiceImpl;
+import ru.rt.payment.service.order.OrderService;
+import ru.rt.payment.service.order.OrderServiceImpl;
 
 public class Runner {
     public static void main(String[] args) {
@@ -27,7 +27,7 @@ public class Runner {
             .setExpirationYear(2022)
             .setExpirationYear(5)
             .setId(1);
-        User user = new User("Petrov", "+3845678132", "nifpopnaf@ukrop.by");
+        User user = new User("Petrov", "+798*", "nifpopnaf@ukrop.by");
 
         Order order1 = new Order(1, List.of(new Product()),
             user, StatusOrder.WAITING, ZonedDateTime.now().plusHours(1), new Amount(500,

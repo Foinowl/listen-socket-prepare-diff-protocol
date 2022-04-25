@@ -1,4 +1,4 @@
-package ru.rt.payment.service.billing;
+package ru.rt.payment.service.order;
 
 import java.util.List;
 import ru.rt.payment.model.Order;
