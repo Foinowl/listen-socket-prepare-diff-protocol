@@ -11,7 +11,17 @@ import ru.rt.payment.service.payment.impl.PaymentSystemFactory;
 
 public class OrderServiceImpl implements OrderService {
 
-    OrderDao orderDao;
+    OrderDao orderDao = new OrderDao() {
+        @Override
+        public List<Order> findByUser(final long id) {
+            return OrderDao.super.findByUser(id);
+        }
+
+        @Override
+        public StatusOrder getStatusByOrderId(final long id) {
+            return OrderDao.super.getStatusByOrderId(id);
+        }
+    };
 
     @Override
     public StatusOrder getStatusOrder(final long id) {
