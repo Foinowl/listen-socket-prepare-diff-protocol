@@ -2,9 +2,9 @@ package ru.rt.payment.service.order;
 
 import java.util.List;
 import ru.rt.payment.model.Order;
-import ru.rt.payment.model.PaymentType;
 import ru.rt.payment.model.StatusOrder;
 import ru.rt.payment.model.User;
+import ru.rt.payment.service.payment.impl.PaymentEnum;
 
 public interface OrderService {
 
@@ -15,7 +15,5 @@ public interface OrderService {
     List<Order> getAllOrdersByUser(User user);
 
     //    оформляем заказ
-    void makePayment(Order order, PaymentType type);
-
-    void makePayment3D(Order order, PaymentType type);
+    void makePayment(Order order, PaymentEnum type);
 }

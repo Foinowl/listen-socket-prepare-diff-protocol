@@ -4,8 +4,12 @@ import ru.rt.payment.model.Order;
 
 public class YandexPaymentSystem extends AbstractPaymentSystem {
 
-    public YandexPaymentSystem(String propertyApiKey) {
+    private YandexPaymentSystem(String propertyApiKey) {
         super(propertyApiKey);
+    }
+
+    protected YandexPaymentSystem() {
+        this("yandex.api");
     }
 
     @Override

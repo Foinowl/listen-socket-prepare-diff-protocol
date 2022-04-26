@@ -6,7 +6,6 @@ import ru.rt.payment.service.payment.PaymentSystem;
 public abstract class AbstractPaymentSystem implements PaymentSystem {
     private String SecretAPI;
 
-
     private final PropertyService propertyService = new PropertyService() {
         @Override
         public String getValuePropertyByName(final String name) {

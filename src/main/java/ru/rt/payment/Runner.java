@@ -7,12 +7,12 @@ import java.util.Locale;
 import ru.rt.payment.model.Amount;
 import ru.rt.payment.model.Card;
 import ru.rt.payment.model.Order;
-import ru.rt.payment.model.PaymentType;
 import ru.rt.payment.model.Product;
 import ru.rt.payment.model.StatusOrder;
 import ru.rt.payment.model.User;
 import ru.rt.payment.service.order.OrderService;
 import ru.rt.payment.service.order.OrderServiceImpl;
+import ru.rt.payment.service.payment.impl.PaymentEnum;
 
 public class Runner {
     public static void main(String[] args) {
@@ -41,11 +41,11 @@ public class Runner {
             user, StatusOrder.WAITING, ZonedDateTime.now().plusHours(1), new Amount(500,
             Currency.getInstance(Locale.US)));
         
-        orderService.makePayment(order1, PaymentType.YANDEX);
+        orderService.makePayment(order1, PaymentEnum.YANDEX);
 
-        orderService.makePayment(order2, PaymentType.PAYMENT);
+        orderService.makePayment(order2, PaymentEnum.PAYPAL);
 
-        orderService.makePayment3D(order3, PaymentType.PAYMENT);
+        orderService.makePayment(order3, PaymentEnum.PAYPAL_3DSECURE);
 
     }
 }

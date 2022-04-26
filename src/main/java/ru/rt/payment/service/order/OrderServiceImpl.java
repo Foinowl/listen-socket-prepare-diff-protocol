@@ -2,11 +2,10 @@ package ru.rt.payment.service.order;
 
 import java.util.List;
 import ru.rt.payment.model.Order;
-import ru.rt.payment.model.PaymentType;
 import ru.rt.payment.model.StatusOrder;
 import ru.rt.payment.model.User;
 import ru.rt.payment.repository.OrderDao;
-import ru.rt.payment.service.payment.PaymentSystem3DSecure;
+import ru.rt.payment.service.payment.impl.PaymentEnum;
 import ru.rt.payment.service.payment.impl.PaymentSystemFactory;
 
 public class OrderServiceImpl implements OrderService {
@@ -36,17 +35,10 @@ public class OrderServiceImpl implements OrderService {
     }
 
     @Override
-    public void makePayment(final Order order, final PaymentType type) {
+    public void makePayment(final Order order, final PaymentEnum type) {
 //        Создаем заказ в таблице бд
         orderDao.create(order);
         PaymentSystemFactory.getPaymentSystem(type).pay(order);
 //        В зависимости от обработки paymentSystem, можно изменять статус обработки заказа
-    }
-
-    @Override
-    public void makePayment3D(final Order order, final PaymentType type) {
-        orderDao.create(order);
-        final PaymentSystem3DSecure paymentSystem = (PaymentSystem3DSecure) PaymentSystemFactory.getPaymentSystem(type);
-        paymentSystem.make3DSecure(order);
     }
 }
