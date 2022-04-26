@@ -36,6 +36,7 @@ public class OrderServiceImpl implements OrderService {
 
     @Override
     public Amount calculateOrderCostByProducts(final List<Product> products) {
+//       Рассчитываем общую стоимость всех продуктов, далее формируем общую стоимость на основе инстанса Amount
         Long sum = products.stream().map(fn -> fn.getAmount().getTotal()).reduce(0L, Long::sum);
         return null;
     }

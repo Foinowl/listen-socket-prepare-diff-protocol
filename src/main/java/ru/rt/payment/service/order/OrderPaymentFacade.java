@@ -13,6 +13,7 @@ public class OrderPaymentFacade {
 
     private final CashService cashService = new CashService();
 
+//    В дальшейшем метод может усложняться, в классе могут появляться новые зависимости
     public void makeOrder(Order order, PaymentEnum type) {
         orderService.createOrder(order);
         paymentService.pay(order, type);

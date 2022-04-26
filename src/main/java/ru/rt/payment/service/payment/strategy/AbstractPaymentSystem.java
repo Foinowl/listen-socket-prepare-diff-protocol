@@ -8,12 +8,14 @@ public abstract class AbstractPaymentSystem implements PaymentSystem {
 
     private String SecretAPI;
 
+
     protected AbstractPaymentSystem(String keyApi) {
         System.out.println("AbstractPaymentSystem: Вызываем конф.метод init() у дочернего класса");
         this.getApiKey(keyApi);
         this.init();
     }
 
+//     Конфигурационный метод для подключения к внешним систем
     abstract protected void init();
 
     private void getApiKey(String keyApi) {

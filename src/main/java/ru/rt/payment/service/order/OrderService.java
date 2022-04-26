@@ -8,6 +8,7 @@ import ru.rt.payment.model.StatusOrder;
 import ru.rt.payment.model.User;
 import ru.rt.payment.service.payment.strategy.PaymentEnum;
 
+// Интерфейс для работы с заказами
 public interface OrderService {
 
     //    Получаем статус заказа по его номеру
