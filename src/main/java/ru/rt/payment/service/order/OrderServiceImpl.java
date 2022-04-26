@@ -1,12 +1,12 @@
 package ru.rt.payment.service.order;
 
 import java.util.List;
+import ru.rt.payment.model.Amount;
 import ru.rt.payment.model.Order;
+import ru.rt.payment.model.Product;
 import ru.rt.payment.model.StatusOrder;
 import ru.rt.payment.model.User;
 import ru.rt.payment.repository.OrderDao;
-import ru.rt.payment.service.payment.impl.PaymentEnum;
-import ru.rt.payment.service.payment.impl.PaymentSystemFactory;
 
 public class OrderServiceImpl implements OrderService {
 
@@ -35,10 +35,15 @@ public class OrderServiceImpl implements OrderService {
     }
 
     @Override
-    public void makePayment(final Order order, final PaymentEnum type) {
-//        Создаем заказ в таблице бд
-        orderDao.create(order);
-        PaymentSystemFactory.getPaymentSystem(type).pay(order);
-//        В зависимости от обработки paymentSystem, можно изменять статус обработки заказа
+    public Amount calculateOrderCostByProducts(final List<Product> products) {
+        Long sum = products.stream().map(fn -> fn.getAmount().getTotal()).reduce(0L, Long::sum);
+        return null;
     }
+
+    @Override
+    public void createOrder(final Order order) {
+        //        Создаем заказ в таблице бд, ловим ошибки и кэшируем их
+        orderDao.create(order);
+    }
+
 }

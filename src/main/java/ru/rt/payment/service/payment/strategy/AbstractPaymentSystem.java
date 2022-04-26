@@ -1,17 +1,12 @@
-package ru.rt.payment.service.payment.impl;
+package ru.rt.payment.service.payment.strategy;
 
 import ru.rt.payment.service.PropertyService;
 import ru.rt.payment.service.payment.PaymentSystem;
 
 public abstract class AbstractPaymentSystem implements PaymentSystem {
-    private String SecretAPI;
+    private final PropertyService propertyService = (final String name) -> name;
 
-    private final PropertyService propertyService = new PropertyService() {
-        @Override
-        public String getValuePropertyByName(final String name) {
-            return name;
-        }
-    };
+    private String SecretAPI;
 
     protected AbstractPaymentSystem(String keyApi) {
         System.out.println("AbstractPaymentSystem: Вызываем конф.метод init() у дочернего класса");

@@ -1,4 +1,4 @@
-package ru.rt.payment.service.payment.impl;
+package ru.rt.payment.service.payment.strategy;
 
 import java.util.function.Supplier;
 import ru.rt.payment.service.payment.PaymentSystem;
@@ -13,13 +13,13 @@ public enum PaymentEnum {
 
     PAYPAL_3DSECURE(PayPal3DSecurePaymentSystem::new);
 
-    Supplier<PaymentSystem> instantiator;
+    final Supplier<PaymentSystem> instantiation;
 
-    PaymentEnum(final Supplier<PaymentSystem> instantiator) {
-        this.instantiator = instantiator;
+    PaymentEnum(final Supplier<PaymentSystem> instantiation) {
+        this.instantiation = instantiation;
     }
 
-    public PaymentSystem getInstantiator() {
-        return instantiator.get();
+    public PaymentSystem getInstantiation() {
+        return instantiation.get();
     }
 }

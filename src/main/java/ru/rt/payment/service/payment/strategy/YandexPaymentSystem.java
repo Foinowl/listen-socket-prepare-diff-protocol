@@ -1,4 +1,4 @@
-package ru.rt.payment.service.payment.impl;
+package ru.rt.payment.service.payment.strategy;
 
 import ru.rt.payment.model.Order;
 

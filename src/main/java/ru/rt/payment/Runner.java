@@ -10,9 +10,10 @@ import ru.rt.payment.model.Order;
 import ru.rt.payment.model.Product;
 import ru.rt.payment.model.StatusOrder;
 import ru.rt.payment.model.User;
+import ru.rt.payment.service.order.OrderPaymentFacade;
 import ru.rt.payment.service.order.OrderService;
 import ru.rt.payment.service.order.OrderServiceImpl;
-import ru.rt.payment.service.payment.impl.PaymentEnum;
+import ru.rt.payment.service.payment.strategy.PaymentEnum;
 
 public class Runner {
     public static void main(String[] args) {
@@ -40,12 +41,12 @@ public class Runner {
         Order order3 = new Order(3, List.of(new Product()),
             user, StatusOrder.WAITING, ZonedDateTime.now().plusHours(1), new Amount(500,
             Currency.getInstance(Locale.US)));
-        
-        orderService.makePayment(order1, PaymentEnum.YANDEX);
 
-        orderService.makePayment(order2, PaymentEnum.PAYPAL);
+        OrderPaymentFacade facade = new OrderPaymentFacade();
 
-        orderService.makePayment(order3, PaymentEnum.PAYPAL_3DSECURE);
+        facade.makeOrder(order1, PaymentEnum.YANDEX);
+        facade.makeOrder(order1, PaymentEnum.PAYPAL);
+        facade.makeOrder(order1, PaymentEnum.PAYPAL_3DSECURE);
 
     }
 }
