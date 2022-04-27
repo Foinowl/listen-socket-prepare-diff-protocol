@@ -1,6 +1,6 @@
 package ru.rt.payment.service.payment.strategy;
 
-import ru.rt.payment.model.Order;
+import ru.rt.payment.model.Payment;
 import ru.rt.payment.service.payment.PaymentSystem3DSecure;
 
 public class Yandex3DSecurePaymentSystem extends AbstractPaymentSystem implements PaymentSystem3DSecure {
@@ -18,12 +18,12 @@ public class Yandex3DSecurePaymentSystem extends AbstractPaymentSystem implement
     }
 
     @Override
-    public void pay(final Order order) {
+    public void pay(final Payment payment) {
         System.out.println("Yandex3DSecurePaymentSystem : проверь уведомление от своего банка");
     }
 
     @Override
-    public void cash(final Order order) {
+    public void refund(final Payment payment) {
         System.out.println("Yandex3DSecurePaymentSystem : проверь уведомление от своего банка");
     }
 }

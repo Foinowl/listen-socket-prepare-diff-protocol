@@ -1,6 +1,6 @@
 package ru.rt.payment.model;
 
-import java.time.ZonedDateTime;
+import java.util.Date;
 import java.util.List;
 
 public class Order {
@@ -10,24 +10,23 @@ public class Order {
 
     private final User user;
 
-    private StatusOrder status;
-
-    private final ZonedDateTime expirationBillTime;
+    private Status status;
 
     private final Amount amount;
 
-    public Order(final long id, final List<Product> products, final User user, final StatusOrder status,
-                 final ZonedDateTime expirationBillTime,
-                 final Amount amount) {
+    private final Date date;
+
+    public Order(final long id, final List<Product> products, final User user, final Status status,
+                 final Amount amount, final Date date) {
         this.id = id;
         this.products = products;
         this.user = user;
         this.status = status;
-        this.expirationBillTime = expirationBillTime;
         this.amount = amount;
+        this.date = date;
     }
 
-    public void setStatus(final StatusOrder status) {
+    public void setStatus(final Status status) {
         this.status = status;
     }
 
@@ -43,15 +42,13 @@ public class Order {
         return user;
     }
 
-    public StatusOrder getStatus() {
+    public Status getStatus() {
         return status;
-    }
-
-    public ZonedDateTime getExpirationBillTime() {
-        return expirationBillTime;
     }
 
     public Amount getAmount() {
         return amount;
     }
+
+    public Date getDate() {return date;}
 }

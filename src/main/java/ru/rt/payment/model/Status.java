@@ -1,14 +1,16 @@
 package ru.rt.payment.model;
 
-public enum StatusOrder {
+public enum Status {
     WAITING("WAITING"),
     PAID("PAID"),
     REJECTED("REJECTED"),
-    EXPIRED("EXPIRED");
+    EXPIRED("EXPIRED"),
+    RETURNED("RETURNED"),
+    CANCELED("CANCELED");
 
     private final String status;
 
-    StatusOrder(final String status) {
+    Status(final String status) {
         this.status = status;
     }
 

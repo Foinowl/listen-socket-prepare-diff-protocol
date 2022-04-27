@@ -3,7 +3,7 @@ package ru.rt.payment.repository;
 import java.util.ArrayList;
 import java.util.List;
 import ru.rt.payment.model.Order;
-import ru.rt.payment.model.StatusOrder;
+import ru.rt.payment.model.Status;
 
 public interface OrderDao extends DAO<Order> {
 
@@ -14,7 +14,7 @@ public interface OrderDao extends DAO<Order> {
     }
 
     //    Получение статуса платежа по номеру платежа
-    default StatusOrder getStatusByOrderId(long id) {
+    default Status getStatusByOrderId(long id) {
         System.out.println("Получение статуса платежа по номеру платежа");
         return null;
     }

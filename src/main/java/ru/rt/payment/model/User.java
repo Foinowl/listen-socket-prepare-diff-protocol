@@ -11,10 +11,11 @@ public class User {
 
     private Card card;
 
-    public User(final String name, final String phone, final String email) {
+    public User(final String name, final String phone, final String email, Card card) {
         this.name = name;
         this.phone = phone;
         this.email = email;
+        this.card = card;
     }
 
     public String getName() {

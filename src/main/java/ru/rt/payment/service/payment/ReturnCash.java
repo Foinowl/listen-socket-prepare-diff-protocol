@@ -1,8 +1,8 @@
 package ru.rt.payment.service.payment;
 
-import ru.rt.payment.model.Order;
+import ru.rt.payment.model.Payment;
 
-// Интерфейс который возвращает стоимость на основе исторического заказа
+// An interface that returns the cost based on a historical payment
 public interface ReturnCash {
-    void cash(Order order);
+    void refund(Payment payment);
 }

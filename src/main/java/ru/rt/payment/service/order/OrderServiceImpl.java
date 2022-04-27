@@ -4,7 +4,7 @@ import java.util.List;
 import ru.rt.payment.model.Amount;
 import ru.rt.payment.model.Order;
 import ru.rt.payment.model.Product;
-import ru.rt.payment.model.StatusOrder;
+import ru.rt.payment.model.Status;
 import ru.rt.payment.model.User;
 import ru.rt.payment.repository.OrderDao;
 
@@ -17,13 +17,13 @@ public class OrderServiceImpl implements OrderService {
         }
 
         @Override
-        public StatusOrder getStatusByOrderId(final long id) {
+        public Status getStatusByOrderId(final long id) {
             return OrderDao.super.getStatusByOrderId(id);
         }
     };
 
     @Override
-    public StatusOrder getStatusOrder(final long id) {
+    public Status getStatusOrder(final long id) {
         System.out.println("Обратились с слою dao и отдали статус заказа");
         return orderDao.getStatusByOrderId(id);
     }

@@ -1,18 +1,18 @@
 package ru.rt.payment;
 
-import java.time.ZonedDateTime;
 import java.util.Currency;
+import java.util.Date;
 import java.util.List;
 import java.util.Locale;
 import ru.rt.payment.model.Amount;
 import ru.rt.payment.model.Card;
 import ru.rt.payment.model.Order;
 import ru.rt.payment.model.Product;
-import ru.rt.payment.model.StatusOrder;
+import ru.rt.payment.model.Status;
 import ru.rt.payment.model.User;
-import ru.rt.payment.service.order.OrderPaymentFacade;
 import ru.rt.payment.service.order.OrderService;
 import ru.rt.payment.service.order.OrderServiceImpl;
+import ru.rt.payment.service.payment.impl.PaymentSystemService;
 import ru.rt.payment.service.payment.strategy.PaymentEnum;
 
 public class Runner {
@@ -28,21 +28,25 @@ public class Runner {
             .setExpirationYear(2022)
             .setExpirationYear(4)
             .setId(1);
-        User user = new User("Petrov", "+798*", "nifpopnaf@ukrop.by");
+        User user = new User("Petrov", "+798*", "nifpopnaf@ukrop.by", card);
 
         Order order1 = new Order(1, List.of(new Product()),
-            user, StatusOrder.WAITING, ZonedDateTime.now().plusHours(1), new Amount(500,
-            Currency.getInstance("RUR")));
+            user, Status.WAITING, new Amount(500,
+            Currency.getInstance("RUR")), new Date());
 
         Order order2 = new Order(2, List.of(new Product()),
-            user, StatusOrder.WAITING, ZonedDateTime.now().plusHours(1), new Amount(500,
-            Currency.getInstance(Locale.US)));
+            user, Status.WAITING, new Amount(500,
+            Currency.getInstance(Locale.US)), new Date());
 
         Order order3 = new Order(3, List.of(new Product()),
-            user, StatusOrder.WAITING, ZonedDateTime.now().plusHours(1), new Amount(500,
-            Currency.getInstance(Locale.US)));
+            user, Status.WAITING, new Amount(500,
+            Currency.getInstance(Locale.US)), new Date());
 
-        OrderPaymentFacade facade = new OrderPaymentFacade();
+
+//        Products can be in different currencies, convert to one
+//        orderService.calculateOrderCostByProducts();
+
+        PaymentSystemService facade = new PaymentSystemService();
 
         facade.makeOrder(order1, PaymentEnum.YANDEX);
         facade.makeOrder(order1, PaymentEnum.PAYPAL);

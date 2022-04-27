@@ -1,6 +1,7 @@
 package ru.rt.payment.service.payment.strategy;
 
 import ru.rt.payment.model.Order;
+import ru.rt.payment.model.Payment;
 
 public class YandexPaymentSystem extends AbstractPaymentSystem {
 
@@ -13,12 +14,12 @@ public class YandexPaymentSystem extends AbstractPaymentSystem {
     }
 
     @Override
-    public void pay(final Order order) {
+    public void pay(final Payment payment) {
         System.out.println("Yandex: заплатили деревянными за заказ :) ");
     }
 
     @Override
-    public void cash(final Order order) {
+    public void refund(final Payment payment) {
         System.out.println("Yandex: вернули уже в зелени за заказ :) ");
     }
 

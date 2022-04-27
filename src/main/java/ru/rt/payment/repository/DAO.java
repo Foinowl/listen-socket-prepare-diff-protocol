@@ -30,4 +30,9 @@ public interface DAO<T> {
         return false;
     }
 
+
+    default boolean update(T t){
+        System.out.println("Обновляем запись из бд по объекту");
+        return false;
+    }
 }
