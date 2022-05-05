@@ -1,10 +1,11 @@
 package ru.rt.payment.service.payment.strategy;
 
-import ru.rt.payment.model.Order;
-import ru.rt.payment.model.Payment;
+import ru.rt.payment.Request;
+import ru.rt.payment.Response;
 import ru.rt.payment.service.payment.PaymentSystem3DSecure;
 
-public class PayPal3DSecurePaymentSystem extends AbstractPaymentSystem implements PaymentSystem3DSecure {
+public class PayPal3DSecurePaymentSystem<RQ extends Request, RS extends Response> extends AbstractPaymentSystem<RQ, RS>
+    implements PaymentSystem3DSecure<RQ, RS> {
 
 
     private PayPal3DSecurePaymentSystem(final String keyApi) {
@@ -16,17 +17,23 @@ public class PayPal3DSecurePaymentSystem extends AbstractPaymentSystem implement
     }
 
     @Override
-    protected void init() {
+    public void init(RQ request, RS response) {
         System.out.println("Проделали большую работу по настройки с внешней системой");
     }
 
     @Override
-    public void pay(final Payment payment) {
-        System.out.println("PayPal3DSecurePaymentSystem : проверь уведомление от своего банка");
+    public void processSecure() {
+//        Через смс-уведомление запрашиваем одобрение или через любое другое уведомление.
     }
 
     @Override
-    public void refund(final Payment payment) {
+    public void pay(final Request request, final Response response) {
+        System.out.println("PayPal3DSecurePaymentSystem : проверь уведомление от своего банка");
+
+    }
+
+    @Override
+    public void refund(final Request request, final Response response) {
         System.out.println("PayPal3DSecurePaymentSystem : проверь уведомление от своего банка");
     }
 }

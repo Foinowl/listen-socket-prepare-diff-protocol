@@ -1,6 +1,7 @@
 package ru.rt.payment.model;
 
 import java.util.Date;
+import ru.rt.payment.service.payment.strategy.PaymentEnum;
 
 public class Payment {
     private final long id;

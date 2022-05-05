@@ -1,20 +1,26 @@
 package ru.rt.payment.service.payment.impl;
 
+import java.util.Date;
 import ru.rt.payment.model.Order;
 import ru.rt.payment.model.Payment;
+import ru.rt.payment.model.ReturnPayment;
+import ru.rt.payment.repository.OrderDao;
 import ru.rt.payment.repository.PaymentDao;
+import ru.rt.payment.repository.ReturnDao;
 import ru.rt.payment.service.order.OrderServiceImpl;
-import ru.rt.payment.service.payment.PaymentService;
 import ru.rt.payment.service.payment.strategy.PaymentEnum;
 
 public class PaymentSystemService {
     private final OrderServiceImpl orderService = new OrderServiceImpl();
-
-    private final PaymentService paymentService = new DefaultPayment();
-
-    private final ReturnCashService cashService = new ReturnCashService();
-
     private PaymentDao paymentDao;
+
+    private OrderDao orderDao;
+
+    private ReturnDao returnDao;
+
+    public void getAllReturnPayment() {
+        returnDao.findAll();
+    }
 
     public PaymentEnum findPayment(final Payment payment) {
 //        find the system through which the payment create
@@ -24,11 +30,7 @@ public class PaymentSystemService {
     public void makeOrder(Order order, PaymentEnum type) {
         orderService.createOrder(order);
         Payment payment = createPayment(order);
-        paymentService.pay(payment, type);
-    }
-
-    public void makeReturnPayment(Payment payment) {
-        paymentService.refund(payment, findPayment(payment));
+        createPayment(payment);
     }
 
     public void createPayment(Payment payment) {
@@ -47,4 +49,14 @@ public class PaymentSystemService {
 //        Create Payment instance based on order object
         return null;
     }
+
+    public ReturnPayment findReturnPayment() {
+        return null;
+    }
+
+    public void createReturnPayment(Payment payment) {
+//        create instance of return payment
+        returnDao.create(new ReturnPayment(12L, payment, new Date()));
+    }
+
 }

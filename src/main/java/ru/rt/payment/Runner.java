@@ -13,6 +13,7 @@ import ru.rt.payment.model.User;
 import ru.rt.payment.service.order.OrderService;
 import ru.rt.payment.service.order.OrderServiceImpl;
 import ru.rt.payment.service.payment.impl.PaymentSystemService;
+import ru.rt.payment.service.payment.strategy.PayPal3DSecurePaymentSystem;
 import ru.rt.payment.service.payment.strategy.PaymentEnum;
 
 public class Runner {
@@ -51,6 +52,5 @@ public class Runner {
         facade.makeOrder(order1, PaymentEnum.YANDEX);
         facade.makeOrder(order1, PaymentEnum.PAYPAL);
         facade.makeOrder(order1, PaymentEnum.PAYPAL_3DSECURE);
-
     }
 }
