@@ -7,17 +7,17 @@ import ru.rt.payment.model.ReturnPayment;
 import ru.rt.payment.repository.OrderDao;
 import ru.rt.payment.repository.PaymentDao;
 import ru.rt.payment.repository.ReturnDao;
+import ru.rt.payment.service.order.OrderService;
 import ru.rt.payment.service.order.OrderServiceImpl;
 import ru.rt.payment.service.payment.strategy.PaymentEnum;
 
 public class PaymentSystemService {
-    private final OrderServiceImpl orderService = new OrderServiceImpl();
+    private final OrderService orderService = new OrderServiceImpl();
     private PaymentDao paymentDao;
 
     private OrderDao orderDao;
 
     private ReturnDao returnDao;
-
     public void getAllReturnPayment() {
         returnDao.findAll();
     }
@@ -46,6 +46,7 @@ public class PaymentSystemService {
     }
 
     private Payment createPayment(Order order) {
+//        orderService.calculateOrderCostByProducts(order);
 //        Create Payment instance based on order object
         return null;
     }

@@ -10,17 +10,12 @@ import ru.rt.payment.model.Order;
 import ru.rt.payment.model.Product;
 import ru.rt.payment.model.Status;
 import ru.rt.payment.model.User;
-import ru.rt.payment.service.order.OrderService;
-import ru.rt.payment.service.order.OrderServiceImpl;
 import ru.rt.payment.service.payment.impl.PaymentSystemService;
-import ru.rt.payment.service.payment.strategy.PayPal3DSecurePaymentSystem;
 import ru.rt.payment.service.payment.strategy.PaymentEnum;
 
 public class Runner {
     public static void main(String[] args) {
         System.out.println("runner started");
-
-        OrderService orderService = new OrderServiceImpl();
 
         Card card = new Card()
             .setCardNumber("4269 5789 0003 002")
@@ -44,13 +39,10 @@ public class Runner {
             Currency.getInstance(Locale.US)), new Date());
 
 
-//        Products can be in different currencies, convert to one
-//        orderService.calculateOrderCostByProducts();
-
         PaymentSystemService facade = new PaymentSystemService();
 
         facade.makeOrder(order1, PaymentEnum.YANDEX);
-        facade.makeOrder(order1, PaymentEnum.PAYPAL);
-        facade.makeOrder(order1, PaymentEnum.PAYPAL_3DSECURE);
+        facade.makeOrder(order2, PaymentEnum.PAYPAL);
+        facade.makeOrder(order3, PaymentEnum.PAYPAL_3DSECURE);
     }
 }

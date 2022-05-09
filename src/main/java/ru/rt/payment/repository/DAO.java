@@ -2,6 +2,8 @@ package ru.rt.payment.repository;
 
 import java.util.List;
 
+// Скорее будет использоваться соедение с бд через jdbc
+// но так же можно через любой другой источник внешней информации
 // Обычный интерфейс для crud операций
 public interface DAO<T> {
 

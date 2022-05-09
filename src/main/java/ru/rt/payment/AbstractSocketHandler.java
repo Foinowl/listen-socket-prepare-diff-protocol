@@ -26,10 +26,7 @@ public abstract class AbstractSocketHandler<RQ extends Request, RS extends Respo
         return Thread.interrupted();
     }
 
-
     protected void setStreams() {
-        InputStream inputStream = null;
-        OutputStream outputStream = null;
         try {
             setInputStream(socket.getInputStream());
             setOutputStream(socket.getOutputStream());
