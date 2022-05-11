@@ -1,7 +1,7 @@
 package ru.rt.payment.service.payment.strategy;
 
-import ru.rt.payment.Request;
-import ru.rt.payment.Response;
+import ru.rt.payment.core.data.Request;
+import ru.rt.payment.core.data.Response;
 
 public class PayPalPaymentSystem<RQ extends Request, RS extends Response> extends AbstractPaymentSystem<RQ, RS> {
     private PayPalPaymentSystem(final String keyApi) {

@@ -1,4 +1,4 @@
-package ru.rt.payment;
+package ru.rt.payment.core.handler;
 
 import java.io.InputStream;
 import java.io.OutputStream;

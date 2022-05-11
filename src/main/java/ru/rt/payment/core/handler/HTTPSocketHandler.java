@@ -1,23 +1,25 @@
-package ru.rt.payment;
+package ru.rt.payment.core.handler;
 
 import java.net.Socket;
+import ru.rt.payment.core.transport.HttpTransport;
+import ru.rt.payment.core.data.HttpRequest;
+import ru.rt.payment.core.data.HttpResponse;
 
 public class HTTPSocketHandler<TR extends HttpTransport<HttpRequest, HttpResponse>>
-    extends AbstractSocketHandler<HttpRequest, HttpResponse>{
+    extends AbstractSocketHandler<HttpRequest, HttpResponse> {
 
+    private HandleRequest<HttpRequest, HttpResponse> handleRequest;
 
-    protected HTTPSocketHandler(Transport<HttpRequest, HttpResponse> transport, final Socket socket) {
+    protected HTTPSocketHandler(TR transport, Socket socket) {
         super(transport, socket);
     }
 
 //    В случае http: обрабатываем и парсим входящий запрос из него достаем конечный url.
 //    Исходя, что есть в url, если посмотреть стат.картинку, то отправляем ее.
-//    Если требуется обработать входящие данные, то ищем подходящий компонент и делигируем его request and response
+//    Если требуется обработать входящие данные, то ищем подходящий компонент и передаем ему request and response
     @Override
     protected void handle() {
-//        Обращаемся к контейнеру, в котором находится компоненты для обработки подходящих запроосов
-//        или просто ищем по директории нужный компонент и через bootstrap грузим его
-//
+//        Has-A: на handleRequest передаем управление.
     }
 
     @Override

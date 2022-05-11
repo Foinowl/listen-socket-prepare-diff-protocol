@@ -1,7 +1,7 @@
 package ru.rt.payment.service.payment.strategy;
 
-import ru.rt.payment.Request;
-import ru.rt.payment.Response;
+import ru.rt.payment.core.data.Request;
+import ru.rt.payment.core.data.Response;
 import ru.rt.payment.service.PropertyService;
 import ru.rt.payment.service.payment.PaymentSystem;
 import ru.rt.payment.service.payment.impl.PaymentSystemService;

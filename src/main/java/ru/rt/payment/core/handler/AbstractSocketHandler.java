@@ -1,4 +1,4 @@
-package ru.rt.payment;
+package ru.rt.payment.core.handler;
 
 import java.io.EOFException;
 import java.io.IOException;
@@ -6,6 +6,9 @@ import java.io.InputStream;
 import java.io.OutputStream;
 import java.net.Socket;
 import java.net.SocketException;
+import ru.rt.payment.core.data.Request;
+import ru.rt.payment.core.data.Response;
+import ru.rt.payment.core.transport.Transport;
 
 public abstract class AbstractSocketHandler<RQ extends Request, RS extends Response> implements SocketHandler {
 //    private static Logger LOGGER;
