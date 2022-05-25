@@ -1,9 +1,9 @@
 package ru.rt.payment.core.data;
 
-public interface Request {
+public interface Request<T> {
 //    Берем объект по имени класса
-    Object getData(Class<?> clazz);
+    T getData(Class<?> clazz);
 
     //    Берем объект по зарезервированному слову
-    Object getData(String name);
+    T getData(String name);
 }

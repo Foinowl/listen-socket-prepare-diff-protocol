@@ -1,4 +1,4 @@
 package ru.rt.payment.core.data;
 
-public interface HttpRequest extends Request {
+public interface HttpRequest<T> extends Request<T> {
 }

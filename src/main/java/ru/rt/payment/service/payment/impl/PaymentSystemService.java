@@ -42,7 +42,7 @@ public class PaymentSystemService {
         paymentDao.create(payment);
 
 
-        paymentSystem.pay(new Request() {
+        paymentSystem.pay(new Request<>() {
             @Override
             public Object getData(final Class<?> clazz) {
                 return payment;
